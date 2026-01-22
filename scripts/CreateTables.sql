@@ -62,11 +62,3 @@ create table bronze.erp_px_cat_g1v2(
 	cat NVARCHAR(50)
 );
 
-IF OBJECT_ID ('bronze.erp_px_cat_g1v2', 'U') IS NOT NULL 
-DROP TABLE bronze.erp_px_cat_g1v2;
-create table bronze.erp_px_cat_g1v2(
-	id NVARCHAR(50),
-	cat NVARCHAR(50)
-);
-
-#this is just a trial we are trying to figure out whether the result is really there or not
