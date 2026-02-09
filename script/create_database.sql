@@ -41,3 +41,20 @@ GO
 
 CREATE SCHEMA gold;
 GO
+
+/*
+
+IF EXISTS (SELECT 1 FROM sys.databases WHERE name = 'DataWarehouse')
+
+This checks if a database named DataWarehouse exists in the SQL Server instance.
+sys.databases is a system view listing all databases.
+SELECT 1 is just a quick way to return a value if the condition is true.
+
+BEGIN
+    ALTER DATABASE DataWarehouse SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+    
+SET SINGLE_USER: Forces the database into a mode where only one connection is allowed.
+WITH ROLLBACK IMMEDIATE: Immediately ends all other active connections and rolls back any uncommitted transactions.
+This is necessary because you cannot drop a database while other users are connected.
+
+*/
