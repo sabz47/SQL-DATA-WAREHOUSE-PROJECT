@@ -6,6 +6,9 @@ Script Purpose:
     This script creates tables in the 'bronze' schema, dropping existing tables 
     if they already exist.
 	  Run this script to re-define the DDL structure of 'bronze' Tables
+
+DDL: DATA DEFINITION LANGUAGE DEFINES THE STRUCTURE OF DATABASE TABLE
+DATA PROFILING: EXPLORE THE DATA TO IDENTIFY COLUMN NAMES AND DATA TYPES
 ===============================================================================
 */
 IF OBJECT_ID('bronze.crm_cust_info','U') IS NOT NULL
