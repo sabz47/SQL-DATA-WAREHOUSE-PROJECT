@@ -11,8 +11,9 @@ QUALITY CHECK: CHECK THAT DATA IS NOT SHIFTED AND IS IN THE CORRECT COLUMN
 
 CREATE OR ALTER PROCEDURE bronze.load_bronze AS
 BEGIN
-	DECLARE @start_time DATETIME, @end_time DATETIME;
+	DECLARE @start_time DATETIME, @end_time DATETIME, @batch_start_time DATETIME, @batch_end_time DATETIME;
 	BEGIN TRY
+SET @batch_start_time = GETDATE();
 print '=========================================================================';
 print 'Loading Bronze Layer';
 print '=========================================================================';
@@ -116,6 +117,11 @@ print '>> Inserting Data into: bronze.erp_px_cat_g1v2';
 print '---------------------------------------------------------------------------';
 print 'Loading Duration ' + CAST(DATEDIFF(second,@start_time,@end_time) AS NVARCHAR) + ' seconds';
 print '<<------------------------------------->>';
+SET @batch_end_time = GETDATE();
+PRINT '=================================================';
+PRINT 'Loading Bronze Layer is completed';
+PRINT '- Total Load Duration : ' + CAST(DATEDIFF(second, @batch_start_time,@batch_end_time) AS NVARCHAR) + ' seconds';
+PRINT '=================================================';
 	END TRY
 	BEGIN CATCH
 	PRINT '======================================================';
@@ -128,3 +134,4 @@ print '<<------------------------------------->>';
 END
 
 EXEC bronze.load_bronze;
+
