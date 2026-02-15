@@ -128,4 +128,3 @@ print '<<------------------------------------->>';
 END
 
 EXEC bronze.load_bronze;
-
